@@ -14,6 +14,11 @@ build.xml
 target/
 dependency-reduced-pom.xml
 
+# gradle
+libs/
+.gradle/
+build/
+
 # vim
 .*.sw[a-p]
 
