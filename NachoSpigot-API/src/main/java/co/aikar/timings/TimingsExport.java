@@ -104,8 +104,12 @@ class TimingsExport extends Thread {
                 pair("name", System.getProperty("os.name")),
                 pair("version", System.getProperty("os.version")),
                 pair("jvmversion", System.getProperty("java.version")),
+                pair("jvmvendor", System.getProperty("java.vendor")),
+                pair("jvmvendorversion", System.getProperty("java.vendor.version")),
                 pair("arch", System.getProperty("os.arch")),
                 pair("maxmem", runtime.maxMemory()),
+                pair("memory", createObject(
+                pair("finalizing", ManagementFactory.getMemoryMXBean().getObjectPendingFinalizationCount()))),
                 pair("cpu", runtime.availableProcessors()),
                 pair("runtime", ManagementFactory.getRuntimeMXBean().getUptime()),
                 pair("flags", StringUtils.join(runtimeBean.getInputArguments(), " ")),
