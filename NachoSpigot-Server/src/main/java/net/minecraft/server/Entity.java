@@ -486,6 +486,12 @@ public abstract class Entity implements ICommandListener {
         // Check if we're moving
         if (d0 == 0 && d1 == 0 && d2 == 0 && this.vehicle == null && this.passenger == null) { return; }
         if (this.loadChunks) loadChunks(); // PaperSpigot - Load chunks
+        // FlamePaper start - Disable Unloaded Chunk Movement
+        if (!((ChunkProviderServer) world.chunkProvider).isChunkLoaded((int) locX >> 4, (int) locZ >> 4)) {
+            this.a(this.getBoundingBox().c(d0, d1, d2));
+            this.recalcPosition();
+        } else
+        // FlamePaper end - Disable Unloaded Chunk Movement
         if (this.noclip) {
             this.a(this.getBoundingBox().c(d0, d1, d2));
             this.recalcPosition();
